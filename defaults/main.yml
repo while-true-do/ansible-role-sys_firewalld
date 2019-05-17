@@ -1,0 +1,43 @@
+---
+# defaults file for while_true_do.sys_firewalld
+
+# Package Management
+wtd_sys_firewalld_package:
+  - firewalld
+# State can be present|latest|absent
+wtd_sys_firewalld_package_state: "present"
+
+# Service Management
+wtd_sys_firewalld_service: "firewalld"
+# State can be started|stopped
+wtd_sys_firewalld_service_state: "started"
+wtd_sys_firewalld_service_enabled: true
+
+# Configuration Management
+wtd_sys_firewalld_conf: []
+# You can specify the rules as shown below.
+# State and zone are defaulting and you don't need to define them.
+#
+# - service: httpd
+#   state: enabled  (defaults to enabled)
+#   zone: public    (defaults to public)
+#
+# - port: 80/tcp
+#   state: enabled  (defaults to enabled)
+#   zone: public    (defaults to public)
+#
+# - source: 192.168.0.0/24
+#   state: enabled  (defaults to enabled)
+#   zone: public    (defaults to public)
+#
+# - interface: eth0
+#   state: enabled  (defaults to enabled)
+#   zone: public    (defaults to public)
+#
+# - masquerade: true
+#   state: enabled  (defaults to enabled)
+#   zone: public    (defaults to public)
+#
+# - rich_rule: rule service name="ftp" audit limit value="1/m" accept
+#   state: enabled  (defaults to enabled)
+#   zone: public    (defaults to public)

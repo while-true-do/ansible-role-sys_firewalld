@@ -1,0 +1,37 @@
+---
+# tasks file for while_true_do.sys_firewalld
+
+- name: Manage firewalld Packages
+  package:
+    name: "{{ wtd_sys_firewalld_package }}"
+    state: "{{ wtd_sys_firewalld_package_state }}"
+  become: true
+  tags:
+    - firewalld
+    - package
+    - security
+    - system
+
+- name: Manage firewalld Service
+  service:
+    name: "{{ wtd_sys_firewalld_service }}"
+    state: "{{ wtd_sys_firewalld_service_state }}"
+    enabled: "{{ wtd_sys_firewalld_service_enabled }}"
+  become: true
+  tags:
+    - firewalld
+    - service
+    - security
+    - system
+
+- name: Include firewalld rules tasks
+  include_tasks: rules.yml
+  loop: "{{ wtd_sys_firewalld_conf }}"
+  tags:
+    - firewalld
+    - Configuration
+    - security
+    - system
+    - service
+    - port
+    - source

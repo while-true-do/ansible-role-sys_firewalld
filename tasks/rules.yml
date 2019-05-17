@@ -1,0 +1,86 @@
+---
+# tasks file for while_true_do.sys_firewalld
+
+- name: Manage firewalld zone Service
+  firewalld:
+    service: "{{ item.service }}"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    immediate: true
+    permanent: true
+  become: true
+  when: item.service is defined
+  tags:
+    - firewalld
+    - service
+    - security
+
+- name: Manage firewalld zone Port
+  firewalld:
+    port: "{{ item.port }}"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    immediate: true
+    permanent: true
+  become: true
+  when: item.port is defined
+  tags:
+    - firewalld
+    - port
+    - security
+
+- name: Manage firewalld zone Source
+  firewalld:
+    source: "{{ item.source }}"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    immediate: true
+    permanent: true
+  become: true
+  when: item.source is defined
+  tags:
+    - firewalld
+    - source
+    - security
+
+- name: Manage firewalld zone Interface
+  firewalld:
+    interface: "{{ item.interface }}"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    permanent: true
+    immediate: true
+  become: true
+  when: item.interface is defined
+  tags:
+    - firewalld
+    - interface
+    - security
+
+- name: Manage firewalld zone Masquerade
+  firewalld:
+    masquerade: "{{ item.masquerade }} | bool"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    permanent: true
+    immediate: true
+  become: true
+  when: item.masquerade is defined
+  tags:
+    - firewalld
+    - masquerade
+    - security
+
+- name: Manage firewalld zone Rich Rule
+  firewalld:
+    rich_rule: "{{ item.rich_rule }}"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    permanent: true
+    immediate: true
+  become: true
+  when: item.rich_rule is defined
+  tags:
+    - firewalld
+    - rule
+    - security
