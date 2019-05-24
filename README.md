@@ -64,19 +64,19 @@ git clone https://github.com/while-true-do/ansible-role-sys_firewalld.git while_
 ---
 # defaults file for while_true_do.sys_firewalld
 
-# Package Management
+## Package Management
 wtd_sys_firewalld_package:
   - firewalld
 # State can be present|latest|absent
 wtd_sys_firewalld_package_state: "present"
 
-# Service Management
+## Service Management
 wtd_sys_firewalld_service: "firewalld"
 # State can be started|stopped
 wtd_sys_firewalld_service_state: "started"
 wtd_sys_firewalld_service_enabled: true
 
-# Configuration Management
+## Configuration Management
 wtd_sys_firewalld_conf: []
 # You can specify the rules as shown below.
 # State and zone are defaulting and you don't need to define them.
