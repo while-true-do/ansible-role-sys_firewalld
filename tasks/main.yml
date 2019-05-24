@@ -18,6 +18,8 @@
     state: "{{ wtd_sys_firewalld_service_state }}"
     enabled: "{{ wtd_sys_firewalld_service_enabled }}"
   become: true
+  when:
+    - ansible_virtualization_type != "docker"
   tags:
     - firewalld
     - service
