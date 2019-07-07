@@ -1,0 +1,15 @@
+---
+# tasks file for while_true_do.sys_firewalld
+
+- name: Manage firewalld zone Masquerade
+  firewalld:
+    masquerade: "{{ item.masquerade }} | bool"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    permanent: true
+    immediate: true
+  become: true
+  tags:
+    - firewalld
+    - masquerade
+    - security

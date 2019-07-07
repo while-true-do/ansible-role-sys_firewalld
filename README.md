@@ -80,6 +80,8 @@ wtd_sys_firewalld_service_enabled: true
 wtd_sys_firewalld_conf: []
 # You can specify the rules as shown below.
 # State and zone are defaulting and you don't need to define them.
+# - State can be enabled|disabled
+# - Zone is depending on the zones defined for your system
 #
 # - service: httpd
 #   state: enabled  (defaults to enabled)
@@ -135,7 +137,6 @@ can be done in a
           zone: internal
 
 ```
--->
 
 ## Known Issues
 

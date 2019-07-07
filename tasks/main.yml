@@ -27,11 +27,11 @@
     - system
 
 - name: Include firewalld rules tasks
-  include_tasks: rules.yml
+  include_tasks: "{{ item|first }}.yml"
   loop: "{{ wtd_sys_firewalld_conf }}"
   tags:
     - firewalld
-    - Configuration
+    - config
     - security
     - system
     - service
