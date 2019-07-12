@@ -11,5 +11,6 @@
   become: true
   tags:
     - firewalld
+    - compliance
     - port
     - security

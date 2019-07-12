@@ -8,7 +8,24 @@
   become: true
   tags:
     - firewalld
+    - compliance
     - package
+    - security
+    - system
+
+- name: Manage firewalld Configuration
+  template:
+    src: "firewalld.conf.j2"
+    dest: "/etc/firewalld/firewalld.conf"
+  become: true
+  notify:
+    - Restart firewalld Service
+  when:
+    - wtd_sys_firewalld_package_state != "absent"
+  tags:
+    - firewalld
+    - compliance
+    - configuration
     - security
     - system
 
@@ -22,18 +39,17 @@
     - ansible_virtualization_type != "docker"
   tags:
     - firewalld
+    - compliance
     - service
     - security
     - system
 
 - name: Include firewalld rules tasks
   include_tasks: "{{ item|first }}.yml"
-  loop: "{{ wtd_sys_firewalld_conf }}"
+  loop: "{{ wtd_sys_firewalld_rules }}"
   tags:
     - firewalld
-    - config
+    - compliance
+    - configuration
     - security
     - system
-    - service
-    - port
-    - source

@@ -28,11 +28,12 @@ galaxy_info:
   # configuration, cloud, security
   galaxy_tags:
     - firewalld
-    - security
+    - compliance
+    - configuration
     - package
+    - port
+    - security
     - service
     - system
-    - port
-    - configuration
 
 dependencies: []

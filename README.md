@@ -76,8 +76,18 @@ wtd_sys_firewalld_service: "firewalld"
 wtd_sys_firewalld_service_state: "started"
 wtd_sys_firewalld_service_enabled: true
 
-## Configuration Management
 wtd_sys_firewalld_conf: []
+# DefaultZone: "public"
+# MinimalMark: "100"
+# CleanupOnExit: "yes"
+# Lockdown: "no"
+# IPv6_rpfilter: "yes"
+# IndividualCalls: "no"
+# LogDenied: "off"
+# AutomaticHelpers: "system"
+
+## Configuration Management
+wtd_sys_firewalld_rules: []
 # You can specify the rules as shown below.
 # State and zone are defaulting and you don't need to define them.
 # - State can be enabled|disabled
@@ -130,7 +140,7 @@ can be done in a
 - hosts: all
   roles:
     - role: while_true_do.sys_firewalld
-      wtd_sys_firewalld_conf:
+      wtd_sys_firewalld_rules:
         - service: http
         - service: https
         - service: ssh

@@ -1,2 +1,13 @@
 ---
 # handlers file for while_true_do.sys_firewalld
+
+- name: Restart firewalld Service
+  service:
+    name: "{{ wtd_sys_firewalld_service }}"
+    state: restarted
+  become: true
+  tags:
+    - firewalld
+    - compliance
+    - security
+    - service

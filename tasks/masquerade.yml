@@ -3,7 +3,7 @@
 
 - name: Manage firewalld zone Masquerade
   firewalld:
-    masquerade: "{{ item.masquerade }} | bool"
+    masquerade: "{{ item.masquerade|bool }}"
     state: "{{ item.state|default('enabled') }}"
     zone: "{{ item.zone|default('public') }}"
     permanent: true
@@ -11,5 +11,6 @@
   become: true
   tags:
     - firewalld
+    - compliance
     - masquerade
     - security
