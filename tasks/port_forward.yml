@@ -1,0 +1,19 @@
+---
+# tasks file for while_true_do.sys_firewalld
+
+- name: Manage firewalld zone Port Forwarding
+  firewalld:
+    port_forward:
+      - port: "{{ item.port }}"
+        proto: "{{ item.proto }}"
+        toport: "{{ item.toport }}"
+    state: "{{ item.state|default('enabled') }}"
+    zone: "{{ item.zone|default('public') }}"
+    permanent: true
+    immediate: true
+  become: true
+  tags:
+    - firewalld
+    - compliance
+    - rule
+    - security
